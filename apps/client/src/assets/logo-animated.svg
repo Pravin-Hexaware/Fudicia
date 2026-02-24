@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <style>
+      @keyframes rotateClockwise {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .rotating-group {
+        transform-origin: 100px 100px;
+        animation: rotateClockwise 2s linear infinite;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background rounded rectangle (static) -->
+  <rect x="10" y="10" width="180" height="180" rx="30" ry="30" fill="#1e3a5f"/>
+  
+  <!-- Everything rotates together as one unit -->
+  <g class="rotating-group">
+    <!-- Outer circle arc (with gap at top-right) -->
+    <path d="M 100 40 
+             A 60 60 0 0 1 160 100
+             A 60 60 0 0 1 100 160
+             A 60 60 0 0 1 40 100
+             A 60 60 0 0 1 75 50" 
+          fill="none" stroke="#4a6580" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Dots around the circle -->
+    <circle cx="100" cy="40" r="10" fill="#2dd4bf"/>
+    <circle cx="152" cy="60" r="10" fill="#2dd4bf"/>
+    <circle cx="160" cy="115" r="10" fill="#2dd4bf"/>
+    <circle cx="100" cy="160" r="10" fill="#f5a623"/>
+    <circle cx="40" cy="130" r="10" fill="#2dd4bf"/>
+    <circle cx="40" cy="70" r="10" fill="#2dd4bf"/>
+    
+    <!-- Inner C shape - EXTRA BOLD THICK WHITE -->
+    <path d="M 128 72 
+             A 40 40 0 1 0 128 128" 
+          fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+    
+    <!-- Yellow arrow - matching original logo proportions -->
+    <polygon points="150,50 110,75 125,90" fill="#f5a623"/>
+  </g>
+</svg>

@@ -1,0 +1,169 @@
+{
+  "id": 1,
+  "name": "Fund Mandate",
+  "description": "",
+  "vertical": "Capital Markets",
+  "subvertical": "Asset Management",
+  "processes": [
+    {
+      "id": 1,
+      "name": "Research and Idea Generation",
+      "level": "core",
+      "description": "",
+      "category": "Back Office",
+      "subprocesses": [
+        {
+          "id": 1,
+          "name": "Sector & Industry Research",
+          "description": "",
+          "category": "Back Office",
+          "data_entities": [
+            {
+              "data_entity_id": 1,
+              "data_entity_name": "Base Profile",
+              "data_entity_description": "",
+              "data_elements": [
+                {
+                  "data_element_id": 1,
+                  "data_element_name": "country",
+                  "data_element_description": "country"
+                },
+                {
+                  "data_element_id": 2,
+                  "data_element_name": "sector",
+                  "data_element_description": "sector"
+                },
+                {
+                  "data_element_id": 3,
+                  "data_element_name": "industry",
+                  "data_element_description": "industry"
+                }
+              ]
+            }
+          ],
+          "application": null,
+          "api": null
+        },
+        {
+          "id": 2,
+          "name": "Bottom-Up Fundamental Analysis",
+          "description": "",
+          "category": "Back Office",
+          "data_entities": [
+            {
+              "data_entity_id": 2,
+              "data_entity_name": "Financial Parameters",
+              "data_entity_description": "",
+              "data_elements": [
+                {
+                  "data_element_id": 4,
+                  "data_element_name": "revenue",
+                  "data_element_description": "revenue"
+                },
+                {
+                  "data_element_id": 5,
+                  "data_element_name": "ebitda",
+                  "data_element_description": "ebitda"
+                },
+                {
+                  "data_element_id": 6,
+                  "data_element_name": "growth",
+                  "data_element_description": "growth"
+                },
+                {
+                  "data_element_id": 7,
+                  "data_element_name": "gross_profit_margin",
+                  "data_element_description": "gross_profit_margin"
+                },
+                {
+                  "data_element_id": 8,
+                  "data_element_name": "net_income",
+                  "data_element_description": "net_income"
+                },
+                {
+                  "data_element_id": 9,
+                  "data_element_name": "return_on_equity",
+                  "data_element_description": "return_on_equity"
+                },
+                {
+                  "data_element_id": 10,
+                  "data_element_name": "debt_to_equity",
+                  "data_element_description": "debt_to_equity"
+                },
+                {
+                  "data_element_id": 11,
+                  "data_element_name": "pe_ratio",
+                  "data_element_description": "pe_ratio"
+                },
+                {
+                  "data_element_id": 12,
+                  "data_element_name": "price_to_book",
+                  "data_element_description": "price_to_book"
+                },
+                {
+                  "data_element_id": 13,
+                  "data_element_name": "market_cap",
+                  "data_element_description": "market_cap"
+                },
+                {
+                  "data_element_id": 14,
+                  "data_element_name": "dividend_yield",
+                  "data_element_description": "dividend_yield"
+                }
+              ]
+            }
+          ],
+          "application": null,
+          "api": null
+        },
+        {
+          "id": 3,
+          "name": "Risk Assessment of Investment Ideas",
+          "description": "",
+          "category": "Back Office",
+          "data_entities": [
+            {
+              "data_entity_id": 3,
+              "data_entity_name": "Risk Parameters",
+              "data_entity_description": "",
+              "data_elements": [
+                {
+                  "data_element_id": 15,
+                  "data_element_name": "competitive_position",
+                  "data_element_description": "competitive_position"
+                },
+                {
+                  "data_element_id": 16,
+                  "data_element_name": "governance_quality",
+                  "data_element_description": "governance_quality"
+                },
+                {
+                  "data_element_id": 17,
+                  "data_element_name": "customer_concentration_risk",
+                  "data_element_description": "customer_concentration_risk"
+                },
+                {
+                  "data_element_id": 18,
+                  "data_element_name": "vendor_platform_dependency",
+                  "data_element_description": "vendor_platform_dependency"
+                },
+                {
+                  "data_element_id": 19,
+                  "data_element_name": "regulatory_legal_risk",
+                  "data_element_description": "regulatory_legal_risk"
+                },
+                {
+                  "data_element_id": 20,
+                  "data_element_name": "business_model_complexity",
+                  "data_element_description": "business_model_complexity"
+                }
+              ]
+            }
+          ],
+          "application": null,
+          "api": null
+        }
+      ]
+    }
+  ]
+}
