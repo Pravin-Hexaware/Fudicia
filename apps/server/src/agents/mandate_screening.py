@@ -9,7 +9,13 @@ from typing import Annotated, Any, TypedDict
 from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage, ToolMessage
 from langgraph.graph import END, START, StateGraph
+from utils.llm_testing import get_azure_chat_openai
 
+# Import StructuredTools from screening_tools
+from utils.screening_tools import (
+    profitability_valuation_screening_tool,
+    scale_liquidity_screening_tool,
+)
 # Add src directory to path for imports
 src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if src_dir not in sys.path:
@@ -18,13 +24,7 @@ if src_dir not in sys.path:
 load_dotenv()
 
 # Import Azure LLM
-from utils.llm_testing import get_azure_chat_openai
 
-# Import StructuredTools from screening_tools
-from utils.screening_tools import (
-    profitability_valuation_screening_tool,
-    scale_liquidity_screening_tool,
-)
 
 
 # ================== STATE DEFINITION ==================
@@ -61,7 +61,7 @@ def agent_node(state: AgentState) -> dict:
     mandate_parameters = state.get("mandate_parameters")
     company_id_list = state.get("company_id_list")
     tools_executed = state.get("tools_executed", 0)
-    all_tool_results = state.get("all_tool_results", {})
+    #all_tool_results = state.get("all_tool_results", {})
 
     print(f"\n[AGENT] Processing: {len(messages)} messages")
     print(
@@ -79,7 +79,8 @@ def agent_node(state: AgentState) -> dict:
                     company_id_list = content.get("company_id_list")
                     print(f"[AGENT] Extracted from message: mandate_id={mandate_id}")
                     break
-                except:
+                except (ValueError | KeyError | TypeError | Exception) as e:
+                    print("[AGENT] Error extracting mandate data from message:", e)
                     pass
 
     # System prompt with explicit termination instruction
@@ -201,7 +202,9 @@ def tools_node(state: AgentState) -> dict:
                     result_dict = json.loads(result)
                     # Store tool result for final summary
                     all_tool_results[tool_name] = result_dict
-                except:
+                except (ValueError | KeyError | TypeError | Exception) as e:
+                    print("[TOOLS NODE] Result is not valid JSON, storing raw string")
+                    print("[TOOLS NODE] Error parsing JSON:", e)
                     pass
 
             # Create ToolMessage

@@ -138,6 +138,8 @@ class CompanyRepository:
                 try:
                     await CompanyRepository.create_company(item, fund_mandate_id=fund_mandate_id)
                     created += 1
-                except Exception:
+                except (ValueError | KeyError | TypeError | Exception) as e:
+                    print("Error creating company from item:", item)
+                    print(f"Error details: {e}")
                     continue
         return created

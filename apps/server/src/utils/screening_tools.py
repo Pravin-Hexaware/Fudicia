@@ -473,7 +473,8 @@ def screen_companies_simple(mandate_parameters: dict, companies: list) -> dict:
                         "company_details": company  # Keep original company dict with company_id
                     })
 
-            except Exception:
+            except (ValueError | KeyError | TypeError | Exception) as e:
+                print(f"  [Screening Error] Company '{company.get('Company ', company.get('Company', 'Unknown'))}': {str(e)} - skipping this company")
                 continue
 
         return {"passed": passed_companies, "conditional": conditional_companies}

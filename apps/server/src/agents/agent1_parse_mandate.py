@@ -86,19 +86,19 @@ def agent_node(state: AgentState, config=None) -> dict:
     if state.get("capability_params"):
         capability_info = f"\n\nCapability Parameters: {state['capability_params']}"
 
-    # STEP 1: Call LLM WITHOUT tools to get thinking text
-    llm_no_tools = LLM  # No bind_tools - allows plain text output
-    result_no_tools = agent_prompt | llm_no_tools
-
-    thinking_response = result_no_tools.invoke(
-        {
-            "tools": "\n".join([f"{t.name}: {t.description}" for t in tools]),
-            "tool_names": ", ".join(t.name for t in tools),
-            "input": input_text + capability_info,
-            "messages": state["messages"],
-        },
-        config=config,
-    )
+    # # STEP 1: Call LLM WITHOUT tools to get thinking text
+    # llm_no_tools = LLM  # No bind_tools - allows plain text output
+    # result_no_tools = agent_prompt | llm_no_tools
+    #
+    # thinking_response = result_no_tools.invoke(
+    #     {
+    #         "tools": "\n".join([f"{t.name}: {t.description}" for t in tools]),
+    #         "tool_names": ", ".join(t.name for t in tools),
+    #         "input": input_text + capability_info,
+    #         "messages": state["messages"],
+    #     },
+    #     config=config,
+    # )
 
     # print(f"[AGENT1] Thinking response type: {type(thinking_response)}")
     # if hasattr(thinking_response, 'content'):
