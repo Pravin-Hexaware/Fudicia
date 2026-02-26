@@ -6,12 +6,13 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
 from langgraph.graph import END, START, StateGraph
 from langgraph.prebuilt import ToolNode
+from utils.llm_testing import get_azure_chat_openai  # Your LLM
+from utils.tools import load_and_filter_companies
 
 load_dotenv()
 
 # YOUR EXACT TOOL ✅ (No modification needed)
-from utils.llm_testing import get_azure_chat_openai  # Your LLM
-from utils.tools import load_and_filter_companies
+
 
 LLM = get_azure_chat_openai()
 

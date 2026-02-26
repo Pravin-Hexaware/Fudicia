@@ -590,7 +590,8 @@ async def websocket_screen_companies(websocket: WebSocket):
                         "type": "warning",
                         "content": f"Results displayed but database save failed: {str(db_error)}"
                     })
-                except Exception:
+                except (ValueError | KeyError | TypeError | Exception) as e:
+                    print("Error sending database error message to client: ", e)
                     pass
 
         elif not company_details:
@@ -612,12 +613,14 @@ async def websocket_screen_companies(websocket: WebSocket):
                 "type": "error",
                 "content": f"Server error: {str(e)}"
             })
-        except Exception:
+        except (ValueError | KeyError | TypeError | Exception) as e:
+            print("Error sending error message to client: ", e)
             pass
 
         try:
             await websocket.close(code=1011)
-        except Exception:
+        except (ValueError | KeyError | TypeError | Exception) as e:
+            print("Error closing websocket after exception: ", e)
             pass
 
 

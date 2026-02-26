@@ -550,7 +550,8 @@ async def ws_parse_mandate_realtime(websocket: WebSocket, session_id: str):
                 "timestamp": datetime.now().isoformat()
             })
             event_queue.put(None)
-        except Exception:
+        except (ValueError | KeyError | TypeError | Exception) as e:
+            print(f"Error sending error message to WebSocket: {e}")
             pass
 
 
@@ -716,5 +717,6 @@ async def ws_filter_companies_realtime(websocket: WebSocket, session_id: str):
                 "timestamp": datetime.now().isoformat()
             })
             event_queue.put(None)
-        except Exception:
+        except (ValueError | KeyError | TypeError | Exception) as e:
+            print("Error putting error message in queue: ", e)
             pass
